@@ -1,0 +1,326 @@
+{
+  "_README": [
+    "Started by init.py from ab.a78.",
+    "",
+    "Every human judgement about this ROM lives in this file; the",
+    "generated listings are disposable, so renaming is free.",
+    "",
+    "What to do next, roughly in order:",
+    "",
+    "  1. python tools/disasm.py \"ab.a78\" -c annotations.json",
+    "     Read the coverage it reports. Low coverage is normal at",
+    "     first and is the number you are trying to move.",
+    "",
+    "  2. Every unresolved indirect jump it reports is a hole. Add the",
+    "     target to `entries`, or the pointer pair to `ram_vectors` if",
+    "     the handler is installed into RAM.",
+    "",
+    "  3. python tools/audiotrace.py \"ab.a78\" -c annotations.json",
+    "     Finds the sound code and the tables feeding it.",
+    "",
+    "  4. Name things in `labels` as soon as you know what they are.",
+    "",
+    "See docs/method.md for the working order and docs/pitfalls.md for",
+    "the traps that each cost real time."
+  ],
+  "entries": [
+    "f8:FF78",
+    "f0:60A0",
+    "b6:87F5",
+    "b6:8821",
+    "b6:8848",
+    "b6:8854",
+    "b6:8870",
+    "b1:B604",
+    "b1:B616",
+    "b1:B630",
+    "b1:B64A",
+    "b1:B65C",
+    "b1:B671",
+    "b1:B68B",
+    "f0:60AA",
+    "f0:60B6",
+    "f0:61CA",
+    "f0:62A0",
+    "b2:B000",
+    "b2:B003",
+    "b3:B000",
+    "b3:B003",
+    "b3:B006",
+    "b3:B009",
+    "b3:B00C",
+    "b4:B000",
+    "b4:B003",
+    "b5:B000",
+    "b5:B003",
+    "b3:9800",
+    "b3:9803",
+    "b3:9806",
+    "b4:9800",
+    "b4:9803",
+    "b4:9806",
+    "b4:9809"
+  ],
+  "ram_vectors": [
+    [
+      "0x00DD",
+      "0x00DE"
+    ]
+  ],
+  "bankat": {},
+  "labels": {
+    "f8:FF78": "ENTRY_Irq",
+    "f0:60A0": "Nmi",
+    "f0:41B0": "UploadPalShadow21",
+    "f0:42B0": "FadeIn",
+    "f0:43B0": "FadeOut",
+    "f0:44B7": "TimerDelay",
+    "f0:46B0": "RunSpawnQueue",
+    "f0:47B0": "Reset",
+    "f0:60AA": "NmiExit",
+    "f0:60B6": "Dli_HudTop",
+    "f0:61CA": "Dli_HudEnd",
+    "f0:61A0": "Dli_TitleSound",
+    "f0:62A0": "Dli_Title",
+    "f0:63A0": "LevelFadeIn",
+    "f0:64A0": "Random",
+    "f0:64B4": "TileRowClass",
+    "f0:64C1": "VblankCallBank3",
+    "f0:65AA": "ReadControls",
+    "f0:67A0": "PlayerFire",
+    "f0:6BA0": "ScrollObjects",
+    "f0:6CA0": "LightGunRead",
+    "f0:6DBF": "LoadLevel",
+    "f0:6EA0": "CopyMapColumns",
+    "f0:6FA0": "MainTick",
+    "f8:D000": "TypeFlags",
+    "f8:D100": "TypeHitWidth_DeathSpeed",
+    "f8:D200": "TypeHitPoints",
+    "f8:D300": "TypeDeathDx",
+    "f8:D400": "TypeDeathDy",
+    "f8:D500": "TypeDeathType",
+    "f8:D600": "TypeChainType",
+    "f8:D700": "TypeScript0",
+    "f8:D900": "TypeScript1",
+    "f8:DB00": "TypeScript2",
+    "f8:DE4B": "MainLoop",
+    "f8:DEA4": "LevelEnd",
+    "f8:F000": "PlayerUpdate",
+    "f8:F24A": "HitTest",
+    "f8:F3FE": "ScrollScriptStep",
+    "f8:F4CC": "SetTileRowPointers",
+    "f8:F4F0": "MapShift20",
+    "f8:F56B": "BuildDisplayLists",
+    "f8:F623": "Build_TileRow",
+    "f8:F656": "Build_EndZone",
+    "f8:F687": "SpawnObject",
+    "f8:F8C2": "DrawListInsert",
+    "f8:F99F": "RemoveObject",
+    "f8:FA44": "UpdateObjects",
+    "f8:FBFE": "ScriptStep",
+    "f8:FE79": "ScriptStoreSlot",
+    "b1:B000": "L1_DliStart",
+    "b1:B003": "L1_Tick",
+    "b1:B010": "L1_ScrollScript",
+    "b1:B587": "L1_PalettesUpload",
+    "b1:B68B": "L1_DliBottomFlip",
+    "b1:B6BF": "L1_Spawner",
+    "b1:B80A": "L1_SpawnAt",
+    "b1:BC00": "L1_MapRow0"
+  },
+  "ram": {
+    "77": "LevelIndex",
+    "78": "Weapon",
+    "76": "HudDirtyBits",
+    "75": "Skill",
+    "DD": "DliVectorLo",
+    "DE": "DliVectorHi",
+    "F2": "DlBufferSel",
+    "F3": "FlipPending",
+    "EC": "DlWriteLo",
+    "ED": "DlWriteHi",
+    "FE": "HudEndSeen",
+    "E6": "RandomLo",
+    "E7": "RandomHi",
+    "2100": "ScrollPos4px",
+    "2102": "TickTimerThreshold",
+    "2103": "ObjectTickDivider",
+    "2104": "ScrollTickDivider",
+    "210D": "ScrollSegmentCount",
+    "210E": "ScrollScriptIndex",
+    "210F": "ScrollStep",
+    "2110": "ScrollFine",
+    "2114": "DrawListCount",
+    "211B": "SpawnQueueCount",
+    "212D": "RandMask0",
+    "2131": "RandMask4_Skill",
+    "227D": "DrawListType",
+    "22FF": "DrawListSlot",
+    "226C": "EventCounters",
+    "2381": "SlotScriptLo",
+    "23EF": "SlotScriptHi",
+    "245D": "SlotFlags",
+    "24CB": "SlotScriptPc",
+    "2539": "SlotLoopCount",
+    "25A7": "SlotY",
+    "2615": "SlotX",
+    "2683": "SlotSpeed",
+    "26F1": "SlotXOffset",
+    "275F": "SlotHitPoints",
+    "1EB8": "QueueType",
+    "1ED6": "QueueY",
+    "1EF4": "QueueX",
+    "1F12": "QueueSpeed",
+    "1F30": "QueueScriptPc",
+    "1F4E": "QueueLoopCount",
+    "224E": "TileRowPtrLo",
+    "2258": "TileRowPtrHi",
+    "2262": "TileRowPalWidth"
+  },
+  "comments": {
+    "f0:60A0": "NMI entry. CLI, then JMP ($DD): every DLI handler arms the next by storing its address in $DD/$DE. (live: J lines in runs/ab/xt1/exectrace.log)",
+    "f0:60B6": "Top-of-frame DLI (raster 16, live). Arms Dli_HudEnd, pages in bank 6 (HUD art and code), sets CHARBASE $B0 / CTRL $40, calls b6:8003 (palette upload, HUD and score upkeep), then SPINS INSIDE THE NMI at $60D2 until the nested DLI at the HUD's foot sets $FE; only then pages the level bank back (raster 81, live) and jumps to its $B000. The main program gets no CPU for those 65 lines.",
+    "f0:6FA0": "One game tick: gated by INTIM < $2102 (RIOT T1024T reloaded with $FF each tick), then level tick (level bank $B003), scroll every $2104 ticks, player/cursor, object scripts every $2103 ticks, and the display-list build, which itself waits for the last flip.",
+    "f0:46B0": "Pending-spawn queue ($1EB8.., count $211B, max 29). Speed byte $FF = remove every object of that type; else SpawnObject with the queued position, speed, script offset and loop count. Objects that cross a 16-line row are re-entered through this queue.",
+    "f8:F56B": "Display-list builder. One pass over the draw list ($227D type / $22FF slot, at most $82 entries): $FF ends a zone's list (two zero bytes, next DLL pointer), $FE emits the zone's tile row (5-byte indirect header), anything else emits a 4-byte header [script+1, script+0, script+2 + (y & 15) - (flags & $7F), x]. No sort, no zone lookup, no cap per zone. Verified live: 16,465 builds on five levels, all byte-exact against this reading (tools/abmodel.lua).",
+    "f8:F687": "Spawn type X at ($FA,$F8). For each of the type's 1-3 cells: a slot with flags $80 in the row of y, and (unless the type's zone flags say one zone is enough) a second slot with flags $90 in the row below. Each slot gets the cell's script pointer; the first slot gets the hit points.",
+    "f8:F8C2": "Insert into the draw list: skip to the zone's bucket (count $FF ends), then before the first entry of a higher class (type flags >> 4; the tile row's class is TileRowClass[row]) or of the same class and a larger y. The arrays above are shifted up by one. Returns the first free slot (flags bit 7 clear) in Y.",
+    "f8:FA44": "Object update: for every draw-list entry, a speed divider ($2683 low nibble = period, high = count), then one script step. A frame record is 5 bytes [palette/width, gfx lo, gfx hi, dx, dy]; dx/dy are applied when the frame is left. If y's row changes the object is removed and queued for respawn at its new row.",
+    "f8:FBFE": "Script commands (first byte < $10): 00/01 skip (01 01 marks a loop start), 02 loop to mark, 03 n repeat n times, 04 restart, 05 k v effect (0 hurt player, 1 sound, 2 blast at position, 3 score), 06 n set loop count, 07 n / 08 n raise / clear event counter n, 09 t remove all of type t, 0A d cell x offset, 0B i n skip n bytes if random AND mask[i], 0C t dx dy s spawn child, 0D t dx dy s become type t, 0E/0F remove self.",
+    "f8:F24A": "Hit test of the cursor (or a blast) against every draw-list entry whose type has a death type ($D500) and whose slot holds hit points: box = TypeHitWidth*4 px by cells*16 lines, widened by four slop bytes at $1F6C. Damage 1, 8 or 16*n by weapon; at zero the object is removed and its death type spawned at ($D300,$D400) offsets, then the $D600 chain.",
+    "f8:F3FE": "Scroll script: every 80 scroll ticks the next byte of the level bank's $B010 table becomes the scroll step ($00 stop, $01 right, $FF left, $10 start, $20 hold until event counter 3 clears, $80 end of level). Verified live on level 1 (runs/ab/tick).",
+    "b1:B6BF": "Level 1's spawner: hand-written code, not a table. Five countdown timers ($2122-$2126) each pick among spawn routines with the random generator, gated on the scroll position $2100; speeds come from $2135-$2138 and toughness masks from $212F (set per skill by b3:9E74)."
+  },
+  "headers": {},
+  "blocks": [],
+  "notes": {
+    "f8": "ab.a78\nmapper supergame, 144 KB, NTSC\nno POKEY declared; audio is the TIA's two voices\n\nVectors: IRQ $FF78  NMI $60A0  RESET $FF78\n\nWritten by init.py. Everything here is read from the cartridge; the\njudgement calls are yours to add."
+  },
+  "banksw": {
+    "f0:44CC": [
+      4
+    ],
+    "f0:44D4": [
+      6
+    ],
+    "f0:60C4": [
+      6
+    ],
+    "f0:60DE": [
+      1
+    ],
+    "f0:62AA": [
+      4
+    ],
+    "f0:62B2": [
+      6
+    ],
+    "f0:62C9": [
+      5
+    ],
+    "f0:62DE": [
+      4,
+      6
+    ],
+    "f0:64C7": [
+      3
+    ],
+    "f0:64CF": [
+      1
+    ],
+    "f0:6DA7": [
+      4
+    ],
+    "f0:6DB1": [
+      6
+    ],
+    "f0:6DC4": [
+      3
+    ],
+    "f0:6DD3": [
+      6
+    ],
+    "f0:6DDB": [
+      3
+    ],
+    "f0:6DE3": [
+      1
+    ]
+  },
+  "_dynamic": {
+    "exectrace.log": {
+      "observed_not_proven": true,
+      "entries": [
+        "b6:87F5",
+        "b6:8821",
+        "b6:8848",
+        "b6:8854",
+        "b6:8870",
+        "b1:B604",
+        "b1:B616",
+        "b1:B630",
+        "b1:B64A",
+        "b1:B65C",
+        "b1:B671",
+        "b1:B68B",
+        "f0:60AA",
+        "f0:60B6",
+        "f0:61CA",
+        "f0:62A0"
+      ],
+      "banksw": {
+        "f0:44CC": [
+          4
+        ],
+        "f0:44D4": [
+          6
+        ],
+        "f0:60C4": [
+          6
+        ],
+        "f0:60DE": [
+          1
+        ],
+        "f0:62AA": [
+          4
+        ],
+        "f0:62B2": [
+          6
+        ],
+        "f0:62C9": [
+          5
+        ],
+        "f0:62DE": [
+          4,
+          6
+        ],
+        "f0:64C7": [
+          3
+        ],
+        "f0:64CF": [
+          1
+        ],
+        "f0:6DA7": [
+          4
+        ],
+        "f0:6DB1": [
+          6
+        ],
+        "f0:6DC4": [
+          3
+        ],
+        "f0:6DD3": [
+          6
+        ],
+        "f0:6DDB": [
+          3
+        ],
+        "f0:6DE3": [
+          1
+        ]
+      },
+      "executed": 3622,
+      "still_unreached": 0
+    }
+  }
+}
